@@ -1,6 +1,6 @@
 import React from "react";
 
-//Layout
+// Layout
 import HomeLayout from "../layouts/Homepage.layout";
 
 const Home = () => {

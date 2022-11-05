@@ -6,7 +6,7 @@ import { RiSearch2Line } from "react-icons/ri";
 
 const MobileNav = ({ user, isDropdownOpen, setIsDropdownOpen }) => {
   return (
-    <div className="flex w-full items-center justify-between lg:hidden container m-auto py-2">
+    <div className="flex w-full items-center justify-between lg:hidden">
       <div className="w-28">
         <img
           src="https://b.zmtcdn.com/web_assets/b40b97e677bc7b2ca77c58c61db266fe1603954218.png"

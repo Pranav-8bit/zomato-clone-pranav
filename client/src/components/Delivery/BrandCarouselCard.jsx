@@ -4,12 +4,8 @@ const DeliverySmCard = ({ image, title }) => {
   return (
     <>
       <div className="lg:hidden  rounded-md w-full">
-        <div className="w-full h-26">
-          <img
-            className="w-full h-full object-center  rounded-full"
-            src={image}
-            alt={title}
-          />
+        <div className="w-full h-24 object-center">
+          <img className="w-full h-full px-3 " src={image} alt={title} />
         </div>
         <div>
           <h3 className="text-sm my-1 text-center font-light">{title}</h3>
@@ -23,7 +19,7 @@ const DeliveryLgCard = ({ image, title }) => {
   return (
     <>
       <div className="hidden lg:block rounded-md w-full">
-        <div className="w-full h-26">
+        <div className="w-full h-full ">
           <img
             className="w-full h-full object-center  rounded-full"
             src={image}
@@ -31,7 +27,7 @@ const DeliveryLgCard = ({ image, title }) => {
           />
         </div>
         <div>
-          <h3 className="text-sm my-1 text-center font-light">{title}</h3>
+          <h3 className="text-md my-1 text-center font-bold">{title}</h3>
         </div>
       </div>
     </>

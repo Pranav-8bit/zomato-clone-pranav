@@ -10,24 +10,24 @@ const CartData = ({ toggle }) => {
   const [cart, setCart] = useState([
     {
       image:
-        "https://b.zmtcdn.com/data/dish_photos/af1/fd1b012ebfbe82f2e5212b702ce19af1.jpg",
-      name: "Butter Pancakes with Bacon",
-      rating: 4.5,
-      price: 200,
-      description: "Rashers and bourbon caramel sauce.",
-      quantity: 3,
-      totalPrice: 600,
+        "https://b.zmtcdn.com/data/dish_photos/269/8dc63955aa808dae4f11d9a62af39269.jpg",
+      name: "Farm Villa Pizza",
+      rating: 3.5,
+      price: 195,
+      quantity: 1,
+      totalPrice: 195,
+      description:
+        "[Available in Jain] The Freshness Of Capsicum, Tomatoes, With The Flavour Of Paneer And Red Paprika Topped With A Korma Dip",
     },
     {
       image:
-        "https://b.zmtcdn.com/data/dish_photos/077/28e7baadea310b7b337fd2fb3f653077.jpg",
-      name: "Amritsari Fish Tikka",
-      rating: 5,
-      price: 250,
+        "https://b.zmtcdn.com/data/dish_photos/141/7cdafc3b491a3490a8e3f7d20ab89141.jpg",
+      name: "Cheesy Garlic Bread",
+      rating: 4,
+      price: 119,
       quantity: 1,
-      totalPrice: 250,
-      description:
-        "Fish marinated in flavourful lemon-chilli masala roasted in the tandoor with care. Serves 2-3 people.",
+      totalPrice: 119,
+      description: "Garlic Bread Baked To Perfection With Cheese",
     },
   ]);
   const navigate = useNavigate();
@@ -64,24 +64,24 @@ const CartContainer = () => {
   const [cart, setCart] = useState([
     {
       image:
-        "https://b.zmtcdn.com/data/dish_photos/af1/fd1b012ebfbe82f2e5212b702ce19af1.jpg",
-      name: "Butter Pancakes with Bacon",
-      rating: 4.5,
-      price: 200,
-      description: "Rashers and bourbon caramel sauce.",
-      quantity: 3,
-      totalPrice: 600,
+        "https://b.zmtcdn.com/data/dish_photos/269/8dc63955aa808dae4f11d9a62af39269.jpg",
+      name: "Farm Villa Pizza",
+      rating: 3.5,
+      price: 195,
+      quantity: 1,
+      totalPrice: 195,
+      description:
+        "[Available in Jain] The Freshness Of Capsicum, Tomatoes, With The Flavour Of Paneer And Red Paprika Topped With A Korma Dip",
     },
     {
       image:
-        "https://b.zmtcdn.com/data/dish_photos/077/28e7baadea310b7b337fd2fb3f653077.jpg",
-      name: "Amritsari Fish Tikka",
-      rating: 5,
-      price: 250,
+        "https://b.zmtcdn.com/data/dish_photos/141/7cdafc3b491a3490a8e3f7d20ab89141.jpg",
+      name: "Cheesy Garlic Bread",
+      rating: 4,
+      price: 119,
       quantity: 1,
-      totalPrice: 250,
-      description:
-        "Fish marinated in flavourful lemon-chilli masala roasted in the tandoor with care. Serves 2-3 people.",
+      totalPrice: 119,
+      description: "Garlic Bread Baked To Perfection With Cheese",
     },
   ]);
 

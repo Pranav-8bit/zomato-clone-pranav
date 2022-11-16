@@ -96,11 +96,11 @@ const LargeNav = ({
   return (
     <div className=" w-full items-center justify-between hidden lg:flex px-20 ">
       <div className="gap-4 w-full item-center justify-around flex">
-        <div className="w-20">
+        <div className="w-28">
           <img
             src="https://b.zmtcdn.com/web_assets/b40b97e677bc7b2ca77c58c61db266fe1603954218.png"
             alt="logo"
-            className="w-full h-full"
+            className="w-full h-4/5"
           />
         </div>
         <div className="w-3/4 bg-white shadow-md p-3 flex items-center gap-3 border border-gray-200 rounded">

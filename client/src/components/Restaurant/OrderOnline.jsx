@@ -49,15 +49,15 @@ const OrderOnline = () => {
             "https://b.zmtcdn.com/data/dish_photos/141/7cdafc3b491a3490a8e3f7d20ab89141.jpg",
           name: "Cheesy Garlic Bread",
           rating: 4,
-          price: "119",
-          description: "",
+          price: 119,
+          description: "Garlic Bread Baked To Perfection With Cheese",
         },
         {
           image:
             "https://b.zmtcdn.com/data/dish_photos/492/3266072efe7d56c724d3ab3877007492.jpg",
           name: "Paneer Tikka Garlic Bread",
           rating: 4,
-          price: "139",
+          price: 139,
           description: "Paneer Tikka & Red Paprika",
         },
         {
@@ -65,7 +65,7 @@ const OrderOnline = () => {
             "https://b.zmtcdn.com/data/dish_photos/4ef/a719a6fbda13fbd6fa3c5626092974ef.jpg",
           name: "Supreme Garlic Bread",
           rating: 3,
-          price: "129",
+          price: 129,
           description: "Sweet Corns + Onions + Jalapenos & Olives",
         },
       ],

@@ -2,6 +2,11 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 
+// redux
+import { useDispatch } from "react-redux";
+import { signUp } from "../../redux/reducers/auth/auth.action";
+import { getMySelf } from "../../redux/reducers/user/user.action";
+
 const Signup = ({ isOpen, setIsOpen }) => {
   const [userData, setUserData] = useState({
     email: "",
@@ -17,7 +22,11 @@ const Signup = ({ isOpen, setIsOpen }) => {
     setIsOpen(false);
   };
 
-  const submit = () => {
+  const dispatch = useDispatch();
+
+  const submit = async () => {
+    await dispatch(signUp(userData));
+    await dispatch(getMySelf());
     closeModal();
     setUserData({ email: "", password: "", fullName: "" });
   };

@@ -13,16 +13,23 @@ import MenuSimilarRestaurantCard from "./MenuSimilarRestaurantCard";
 import ReviewCard from "../Reviews/ReviewCard";
 import MapView from "./MapView";
 
+// redux
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+
 const Overview = () => {
-  const [restaurant, setRestaurant] = useState({
-    _id: "13sf5a321f5aw35d",
-    isPro: true,
-    isOff: true,
-    name: "La Pino'z Pizza",
-    restaurantReviewValue: "3.7",
-    cuisine: ["Pizza", "Italian", "Pasta", "FastFood"],
-    averageCost: "150",
-  });
+  const [restaurant, setRestaurant] = useState({ cuisine: [] });
+
+  const reduxState = useSelector(
+    (globalState) => globalState.restaurant.selectedRestaurant.restaurant
+  );
+
+  useEffect(() => {
+    if (reduxState) {
+      setRestaurant(reduxState);
+    }
+  }, [reduxState]);
+
   const [menuImages, setMenuImages] = useState([
     "https://b.zmtcdn.com/data/menus/909/18438909/688f6966637cab4e6453eb75324a54da.jpg",
     "https://b.zmtcdn.com/data/menus/909/18438909/b3000782e0124171074d15adbbd3b912.jpg",

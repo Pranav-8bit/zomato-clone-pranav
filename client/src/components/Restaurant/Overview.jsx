@@ -13,37 +13,44 @@ import MenuSimilarRestaurantCard from "./MenuSimilarRestaurantCard";
 import ReviewCard from "../Reviews/ReviewCard";
 import MapView from "./MapView";
 
+// redux
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { getReview } from "../../redux/reducers/review/review.action";
+import { getImage } from "../../redux/reducers/image/image.action";
+
 const Overview = () => {
-  const [restaurant, setRestaurant] = useState({
-    _id: "13sf5a321f5aw35d",
-    isPro: true,
-    isOff: true,
-    name: "La Pino'z Pizza",
-    restaurantReviewValue: "3.7",
-    cuisine: ["Pizza", "Italian", "Pasta", "FastFood"],
-    averageCost: "150",
-  });
-  const [menuImages, setMenuImages] = useState([
-    "https://b.zmtcdn.com/data/menus/909/18438909/688f6966637cab4e6453eb75324a54da.jpg",
-    "https://b.zmtcdn.com/data/menus/909/18438909/b3000782e0124171074d15adbbd3b912.jpg",
-    "https://b.zmtcdn.com/data/menus/909/18438909/dc9c3bed442da7785e93019705b216be.jpg",
-    "https://b.zmtcdn.com/data/menus/909/18438909/053aa54848a208dda669c19cc0898397.jpg",
-  ]);
-  const [reviews, setReviews] = useState([
-    {
-      rating: 3.5,
-      isRestaurantReview: false,
-      createdAt: "Fri Oct 14 2022 20:20:34 GMT+0530 (India Standard Time)",
-      reviewText: "Very bad experience.",
-    },
-    {
-      rating: 4.5,
-      isRestaurantReview: false,
-      createdAt: "Fri Oct 14 2022 20:19:34 GMT+0530 (India Standard Time)",
-      reviewText: "Very good experience.",
-    },
-  ]);
+  const [restaurant, setRestaurant] = useState({ cuisine: [] });
+  const [menuImages, setMenuImages] = useState([]);
+  const [reviews, setReviews] = useState([]);
+
   const { id } = useParams;
+  const dispatch = useDispatch();
+
+  const reduxState = useSelector(
+    (globalState) => globalState.restaurant.selectedRestaurant.restaurant
+  );
+
+  useEffect(() => {
+    if (reduxState) {
+      setRestaurant(reduxState);
+    }
+  }, [reduxState]);
+
+  useEffect(() => {
+    if (reduxState) {
+      dispatch(getImage(reduxState?.menuImages)).then((data) => {
+        const images = [];
+        data.payload.images.map(({ location }) => images.push(location));
+        setMenuImages(images);
+      });
+
+      dispatch(getReview(reduxState?._id)).then((data) => {
+        console.log(data.payload);
+        setReviews(data.payload.reviews);
+      });
+    }
+  }, [reduxState]);
 
   const slideConfig = {
     slidesPerView: 1,
@@ -120,12 +127,12 @@ const Overview = () => {
         <div className="flex flex-col-reverse">
           <div className="my-4">
             <h4 className="text-lg font-medium">{restaurant.name} Reviews</h4>
-            {/* <ReactStars
+            <ReactStars
               count={5}
               onChange={(newRating) => console.log(newRating)}
               size={24}
               activeColor="#ffd700"
-            /> */}
+            />
             {reviews.map((review, index) => (
               <ReviewCard {...review} key={index} />
             ))}

@@ -93,7 +93,7 @@ const DeliveryCarouselBrand = () => {
           <BrandCarouselCard key={index} {...brand} />
         ))}
       </div> */}
-      <div className=" lg:block">
+      <div className=" lg:block ">
         <Swiper {...slideConfig}>
           {topBrands.map((brand, index) => (
             <SwiperSlide key={index}>

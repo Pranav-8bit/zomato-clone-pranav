@@ -1,22 +1,36 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ImageViewer from "react-simple-image-viewer";
+
+// redux
+import { useDispatch, useSelector } from "react-redux";
+import getImage from "../../redux/reducers/image/image.action";
 
 // components
 import PhotoCollection from "./PhotoCollection";
 
 const Photos = () => {
-  const [photos, setPhotos] = useState([
-    "https://b.zmtcdn.com/data/pictures/chains/9/18438909/947122445d5c54bf7b7898d109beec45.jpg",
-    "https://b.zmtcdn.com/data/pictures/chains/9/18438909/e7e5d7fdb3d647f748e5cb8a88ff0d69.jpg",
-    "https://b.zmtcdn.com/data/pictures/chains/9/18438909/892e9f52014d340fb956be39090ae509.jpg",
-    "https://b.zmtcdn.com/data/pictures/chains/9/18438909/e3a1d5d268228310ec3b0ef72b2f58f9.jpg",
-    "https://b.zmtcdn.com/data/pictures/chains/9/18438909/b1a810f35a6fc7846895fcef8b765517.jpg",
-  ]);
+  const [photos, setPhotos] = useState([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState(0);
 
   const closeViewer = () => setIsMenuOpen(false);
   const openViewer = () => setIsMenuOpen(true);
+
+  const dispatch = useDispatch();
+
+  const reduxState = useSelector(
+    (globalState) => globalState.restaurant.selectedRestaurant.restaurant
+  );
+
+  useEffect(() => {
+    if (reduxState) {
+      dispatch(getImage(reduxState?.photos)).then((data) => {
+        const images = [];
+        data.payload.images.map(({ location }) => images.push(location));
+        setPhotos(images);
+      });
+    }
+  }, [reduxState]);
 
   return (
     <>

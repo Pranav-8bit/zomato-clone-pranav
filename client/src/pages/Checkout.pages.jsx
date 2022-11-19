@@ -8,6 +8,9 @@ import CheckoutLayout from "../layouts/Checkout.layout";
 import FoodItem from "../components/Cart/FoodItem";
 import AddressList from "../components/Checkout/AddressList";
 
+// redux
+import { useSelector } from "react-redux";
+
 const Checkout = () => {
   const address = [
     {
@@ -20,33 +23,12 @@ const Checkout = () => {
     },
   ];
 
-  const [cart, setCart] = useState([
-    {
-      image:
-        "https://b.zmtcdn.com/data/dish_photos/269/8dc63955aa808dae4f11d9a62af39269.jpg",
-      name: "Farm Villa Pizza",
-      rating: 3.5,
-      price: 195,
-      quantity: 1,
-      totalPrice: 195,
-      description:
-        "[Available in Jain] The Freshness Of Capsicum, Tomatoes, With The Flavour Of Paneer And Red Paprika Topped With A Korma Dip",
-    },
-    {
-      image:
-        "https://b.zmtcdn.com/data/dish_photos/141/7cdafc3b491a3490a8e3f7d20ab89141.jpg",
-      name: "Cheesy Garlic Bread",
-      rating: 4,
-      price: 119,
-      quantity: 1,
-      totalPrice: 119,
-      description: "Garlic Bread Baked To Perfection With Cheese",
-    },
-  ]);
+  const cart = useSelector((globalState) => globalState.cart.cart);
+  const user = useSelector((globalState) => globalState.user);
 
   const payNow = () => {
     let options = {
-      key: "rzp_test_bZKuBTPLbS2cSL",
+      key: "rzp_test_ouMFLfkfGThNMC",
       amount:
         cart.reduce((total, current) => total + current.totalPrice, 0) * 100,
       currency: "INR",
@@ -57,8 +39,8 @@ const Checkout = () => {
         console.log(data);
       },
       prefill: {
-        name: "Pranav",
-        email: "trxr@hmail.com",
+        name: user.name,
+        email: user.email,
       },
       theme: {
         color: "#e23744",

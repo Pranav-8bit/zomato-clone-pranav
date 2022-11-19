@@ -1,35 +1,16 @@
 import React, { useState } from "react";
-import { IoMdArrowFropdown, IoCloseSharp } from "react-icons/io5";
+import { IoCloseSharp } from "react-icons/io5";
 import { IoMdArrowDropup, IoMdArrowDropright } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+
+// redux
+import { useSelector } from "react-redux";
 
 // components
 import FoodItem from "./FoodItem";
 
 const CartData = ({ toggle }) => {
-  const [cart, setCart] = useState([
-    {
-      image:
-        "https://b.zmtcdn.com/data/dish_photos/269/8dc63955aa808dae4f11d9a62af39269.jpg",
-      name: "Farm Villa Pizza",
-      rating: 3.5,
-      price: 195,
-      quantity: 1,
-      totalPrice: 195,
-      description:
-        "[Available in Jain] The Freshness Of Capsicum, Tomatoes, With The Flavour Of Paneer And Red Paprika Topped With A Korma Dip",
-    },
-    {
-      image:
-        "https://b.zmtcdn.com/data/dish_photos/141/7cdafc3b491a3490a8e3f7d20ab89141.jpg",
-      name: "Cheesy Garlic Bread",
-      rating: 4,
-      price: 119,
-      quantity: 1,
-      totalPrice: 119,
-      description: "Garlic Bread Baked To Perfection With Cheese",
-    },
-  ]);
+  const cart = useSelector((glocalState) => glocalState.cart.cart);
   const navigate = useNavigate();
   const continueToCheckout = () => navigate("/checkout/orders");
 
@@ -61,29 +42,7 @@ const CartData = ({ toggle }) => {
 const CartContainer = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const [cart, setCart] = useState([
-    {
-      image:
-        "https://b.zmtcdn.com/data/dish_photos/269/8dc63955aa808dae4f11d9a62af39269.jpg",
-      name: "Farm Villa Pizza",
-      rating: 3.5,
-      price: 195,
-      quantity: 1,
-      totalPrice: 195,
-      description:
-        "[Available in Jain] The Freshness Of Capsicum, Tomatoes, With The Flavour Of Paneer And Red Paprika Topped With A Korma Dip",
-    },
-    {
-      image:
-        "https://b.zmtcdn.com/data/dish_photos/141/7cdafc3b491a3490a8e3f7d20ab89141.jpg",
-      name: "Cheesy Garlic Bread",
-      rating: 4,
-      price: 119,
-      quantity: 1,
-      totalPrice: 119,
-      description: "Garlic Bread Baked To Perfection With Cheese",
-    },
-  ]);
+  const cart = useSelector((glocalState) => glocalState.cart.cart);
 
   const toggleCart = () => setIsOpen((prev) => !prev);
   const closeCart = () => setIsOpen(false);

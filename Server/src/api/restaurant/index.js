@@ -20,7 +20,7 @@ Router.get("/", async (req, res) => {
   try {
     // http://localhost:4000/restaurant/?city=ahmedabad
     const { city } = req.query;
-    await ValidateRestaurantCity(req.query);
+    // await ValidateRestaurantCity(req.query);
     const restaurants = await RestaurantModel.find({ city });
     if (restaurants.length === 0) {
       return res.json({ error: "No restaurants in the city" });
@@ -41,7 +41,7 @@ Router.get("/", async (req, res) => {
 Router.get("/:_id", async (req, res) => {
   try {
     const { _id } = req.params;
-    await ValidateId(req.params);
+    // await ValidateId(req.params);
     const restaurant = await RestaurantModel.findById(_id);
     if (!restaurant) {
       return res.status(404).json({ error: "Restaurant not Found" });
@@ -62,7 +62,7 @@ Router.get("/:_id", async (req, res) => {
 Router.get("/search/:searchString", async (req, res) => {
   try {
     const { searchString } = req.params;
-    await ValidateSearchString(req.params);
+    // await ValidateSearchString(req.params);
     const restaurants = await RestaurantModel.find({
       name: { $regex: searchString, $options: "i" },
     });

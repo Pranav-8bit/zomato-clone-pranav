@@ -18,12 +18,28 @@ const upload = multer({ storage });
  * Access    Public
  * Method    Get
  */
-Router.get("/:id", async (req, res) => {
+// Router.get("/:id", async (req, res) => {
+//   try {
+//     const { _id } = req.params;
+//     const image = await ImageModel.findById(_id);
+//     return res.json({ image });
+//   } catch (error) {
+//     return res.status().json({ error: error.message });
+//   }
+// });
+
+Router.get("/:_id", async (req, res) => {
   try {
-    const image = await ImageModel.findById(req.params._id);
-    return res.json({ image });
+    const { _id } = req.params;
+
+    const images = await ImageModel.findById(_id);
+
+    if (!images) {
+      return res.status(404).json({ error: "Image not found" });
+    }
+    return res.json({ images });
   } catch (error) {
-    return res.status().json({ error: error.message });
+    return res.status(500).json({ error: error.message });
   }
 });
 
